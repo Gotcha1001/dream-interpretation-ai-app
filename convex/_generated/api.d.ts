@@ -12,6 +12,7 @@ import type * as analysis from "../analysis.js";
 import type * as dreams from "../dreams.js";
 import type * as helpers from "../helpers.js";
 import type * as lib_ai from "../lib/ai.js";
+import type * as lib_colorThemes from "../lib/colorThemes.js";
 import type * as profile from "../profile.js";
 import type * as user from "../user.js";
 
@@ -26,6 +27,7 @@ declare const fullApi: ApiFromModules<{
   dreams: typeof dreams;
   helpers: typeof helpers;
   "lib/ai": typeof lib_ai;
+  "lib/colorThemes": typeof lib_colorThemes;
   profile: typeof profile;
   user: typeof user;
 }>;

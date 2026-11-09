@@ -25,6 +25,14 @@
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
+  --color-accent-50: var(--accent-50);
+  --color-accent-100: var(--accent-100);
+  --color-accent-200: var(--accent-200);
+  --color-accent-300: var(--accent-300);
+  --color-accent-400: var(--accent-400);
+  --color-accent-500: var(--accent-500);
+  --color-accent-600: var(--accent-600);
+  --color-accent-700: var(--accent-700);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
@@ -43,50 +51,67 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+/* ------------------------------------------------------------------ */
+/* LIGHT MODE — pure white pages, accent-colored borders/components    */
+/* ------------------------------------------------------------------ */
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: #ffffff;
   --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
+  --card: #ffffff;
   --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
+  --popover: #ffffff;
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
+  --primary: var(--accent-600);
+  --primary-foreground: #ffffff;
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
+
+  /* default accent = cyan (overridden by [data-accent] below) */
+  --accent-50: #ecfeff;
+  --accent-100: #cffafe;
+  --accent-200: #a5f3fc;
+  --accent-300: #67e8f9;
+  --accent-400: #22d3ee;
+  --accent-500: #06b6d4;
+  --accent-600: #0891b2;
+  --accent-700: #0e7490;
+
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: color-mix(in srgb, var(--accent-500) 30%, transparent);
+  --input: color-mix(in srgb, var(--accent-500) 30%, transparent);
+  --ring: var(--accent-500);
   --chart-1: oklch(0.809 0.105 251.813);
   --chart-2: oklch(0.623 0.214 259.815);
   --chart-3: oklch(0.546 0.245 262.881);
   --chart-4: oklch(0.488 0.243 264.376);
   --chart-5: oklch(0.424 0.199 265.638);
-  --sidebar: hsl(0 0% 98%);
+  --sidebar: #ffffff;
   --sidebar-foreground: hsl(240 5.3% 26.1%);
-  --sidebar-primary: hsl(240 5.9% 10%);
-  --sidebar-primary-foreground: hsl(0 0% 98%);
-  --sidebar-accent: hsl(240 4.8% 95.9%);
+  --sidebar-primary: var(--accent-600);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: color-mix(in srgb, var(--accent-500) 10%, transparent);
   --sidebar-accent-foreground: hsl(240 5.9% 10%);
-  --sidebar-border: hsl(220 13% 91%);
-  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+  --sidebar-border: color-mix(in srgb, var(--accent-500) 25%, transparent);
+  --sidebar-ring: var(--accent-500);
 }
 
+/* ------------------------------------------------------------------ */
+/* DARK MODE — near-black "generating modal" panels, accent glow       */
+/* ------------------------------------------------------------------ */
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: #0a0a0a;
   --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
+  --card: #04070a;
   --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
+  --popover: #04070a;
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+  --primary: var(--accent-400);
+  --primary-foreground: #04070a;
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
@@ -94,31 +119,129 @@
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  --border: color-mix(in srgb, var(--accent-400) 22%, transparent);
+  --input: color-mix(in srgb, var(--accent-400) 22%, transparent);
+  --ring: var(--accent-400);
   --chart-1: oklch(0.809 0.105 251.813);
   --chart-2: oklch(0.623 0.214 259.815);
   --chart-3: oklch(0.546 0.245 262.881);
   --chart-4: oklch(0.488 0.243 264.376);
   --chart-5: oklch(0.424 0.199 265.638);
-  --sidebar: hsl(240 5.9% 10%);
+  --sidebar: #04070a;
   --sidebar-foreground: hsl(240 4.8% 95.9%);
-  --sidebar-primary: hsl(224.3 76.3% 48%);
-  --sidebar-primary-foreground: hsl(0 0% 100%);
-  --sidebar-accent: hsl(240 3.7% 15.9%);
+  --sidebar-primary: var(--accent-400);
+  --sidebar-primary-foreground: #04070a;
+  --sidebar-accent: color-mix(in srgb, var(--accent-400) 12%, transparent);
   --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
-  --sidebar-border: hsl(240 3.7% 15.9%);
-  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+  --sidebar-border: color-mix(in srgb, var(--accent-400) 18%, transparent);
+  --sidebar-ring: var(--accent-400);
+}
+
+/* ------------------------------------------------------------------ */
+/* ACCENT COLORS — set on <html data-accent="..."> by ColorThemeContext */
+/* ------------------------------------------------------------------ */
+[data-accent="cyan"] {
+  --accent-50: #ecfeff;
+  --accent-100: #cffafe;
+  --accent-200: #a5f3fc;
+  --accent-300: #67e8f9;
+  --accent-400: #22d3ee;
+  --accent-500: #06b6d4;
+  --accent-600: #0891b2;
+  --accent-700: #0e7490;
+}
+
+[data-accent="violet"] {
+  --accent-50: #f5f3ff;
+  --accent-100: #ede9fe;
+  --accent-200: #ddd6fe;
+  --accent-300: #c4b5fd;
+  --accent-400: #a78bfa;
+  --accent-500: #8b5cf6;
+  --accent-600: #7c3aed;
+  --accent-700: #6d28d9;
+}
+
+[data-accent="emerald"] {
+  --accent-50: #ecfdf5;
+  --accent-100: #d1fae5;
+  --accent-200: #a7f3d0;
+  --accent-300: #6ee7b7;
+  --accent-400: #34d399;
+  --accent-500: #10b981;
+  --accent-600: #059669;
+  --accent-700: #047857;
+}
+
+[data-accent="amber"] {
+  --accent-50: #fffbeb;
+  --accent-100: #fef3c7;
+  --accent-200: #fde68a;
+  --accent-300: #fcd34d;
+  --accent-400: #fbbf24;
+  --accent-500: #f59e0b;
+  --accent-600: #d97706;
+  --accent-700: #b45309;
+}
+
+[data-accent="rose"] {
+  --accent-50: #fff1f2;
+  --accent-100: #ffe4e6;
+  --accent-200: #fecdd3;
+  --accent-300: #fda4af;
+  --accent-400: #fb7185;
+  --accent-500: #f43f5e;
+  --accent-600: #e11d48;
+  --accent-700: #be123c;
+}
+
+[data-accent="blue"] {
+  --accent-50: #eff6ff;
+  --accent-100: #dbeafe;
+  --accent-200: #bfdbfe;
+  --accent-300: #93c5fd;
+  --accent-400: #60a5fa;
+  --accent-500: #3b82f6;
+  --accent-600: #2563eb;
+  --accent-700: #1d4ed8;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
-    @apply bg-background text-foreground;
   }
+}
+
+/* Accent glow on every shadcn card */
+[data-slot="card"],
+.accent-glow {
+  box-shadow: 0 0 24px -10px
+    color-mix(in srgb, var(--accent-400) 30%, transparent);
+  transition: box-shadow 0.2s ease;
+}
+
+/* For clickable cards (e.g. DreamCard) */
+.accent-glow {
+  border-color: color-mix(in srgb, var(--accent-400) 15%, transparent);
+  box-shadow: 0 0 24px -10px
+    color-mix(in srgb, var(--accent-400) 30%, transparent);
+  transition: box-shadow 0.2s ease;
+}
+
+/* Hover boost for clickable boxes/cards */
+.accent-glow-hover:hover {
+  box-shadow: 0 0 32px -8px
+    color-mix(in srgb, var(--accent-400) 50%, transparent);
+}
+
+/* Hides the scrollbar visually, but the element still scrolls normally. */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

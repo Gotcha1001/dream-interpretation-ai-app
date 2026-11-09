@@ -10,6 +10,8 @@ import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 
 import Provider from "./provider";
 import { AppSidebar } from "./components/Appsidebar";
+import { ColorThemeProvider } from "./context/ColorThemeContext";
+import { RainBackground } from "./components/RainBackground";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({
@@ -37,17 +39,25 @@ export default function RootLayout({
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <ConvexClientProvider>
               <Provider>
-                <SidebarProvider>
-                  <div className="flex min-h-screen w-full flex-col">
-                    <Navbar />
-                    <div className="flex flex-1 overflow-hidden">
-                      <AppSidebar />
-                      <SidebarInset className="flex-1 overflow-auto">
-                        <main className="p-4 lg:p-6">{children}</main>
-                      </SidebarInset>
+                {/* Must wrap the rain, navbar, sidebar and every page. */}
+                <ColorThemeProvider>
+                  {/* Fixed full-screen rain behind the whole app. */}
+                  <RainBackground fixed />
+
+                  <SidebarProvider>
+                    {/* relative z-10 keeps all content above the rain */}
+                    <div className="relative z-10 flex min-h-screen w-full flex-col">
+                      <Navbar />
+                      <div className="flex flex-1 overflow-hidden">
+                        <AppSidebar />
+                        {/* bg-transparent lets the rain show through */}
+                        <SidebarInset className="flex-1 overflow-auto bg-transparent">
+                          <main className="p-4 lg:p-6">{children}</main>
+                        </SidebarInset>
+                      </div>
                     </div>
-                  </div>
-                </SidebarProvider>
+                  </SidebarProvider>
+                </ColorThemeProvider>
 
                 <Toaster richColors />
               </Provider>

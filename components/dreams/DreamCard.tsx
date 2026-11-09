@@ -13,7 +13,7 @@ export function DreamCard({ dream }: { dream: Row }) {
   const busy = dream.status === "pending" || dream.status === "analyzing";
   return (
     <Link href={`/dashboard/dreams/${dream._id}`}>
-      <Card className="h-full transition hover:border-violet-400 hover:shadow-md">
+      <Card className="h-full accent-glow-hover hover:border-accent-400">
         <CardContent className="space-y-2 pt-5">
           <div className="flex items-start justify-between gap-2">
             <h3 className="font-semibold leading-snug">{dream.title}</h3>
@@ -23,7 +23,7 @@ export function DreamCard({ dream }: { dream: Row }) {
           </div>
 
           {busy && (
-            <p className="flex items-center gap-1.5 text-xs text-violet-500">
+            <p className="flex items-center gap-1.5 text-xs text-accent-500">
               <Loader2 className="h-3 w-3 animate-spin" /> Interpreting…
             </p>
           )}
