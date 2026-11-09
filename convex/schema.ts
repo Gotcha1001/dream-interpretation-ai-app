@@ -33,6 +33,7 @@ export default defineSchema({
     imageUrl: v.optional(v.string()),
     role: v.union(v.literal("admin"), v.literal("user")),
     createdAt: v.number(),
+    colorTheme: v.optional(v.string()),
   }).index("by_clerk_id", ["clerkId"]),
 
   // One row per user: the "background" form. Fed to the AI with every dream

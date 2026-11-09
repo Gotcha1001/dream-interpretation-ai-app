@@ -86,3 +86,27 @@ export const getMe = query({
     );
   },
 });
+export const setColorTheme = mutation({
+  args: {
+    colorTheme: v.union(
+      v.literal("cyan"),
+      v.literal("violet"),
+      v.literal("emerald"),
+      v.literal("amber"),
+      v.literal("rose"),
+      v.literal("blue"),
+    ),
+  },
+  handler: async (ctx, { colorTheme }) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error("Unauthorized");
+
+    const existing = await ctx.db
+      .query("users")
+      .withIndex("by_clerk_id", (q) => q.eq("clerkId", identity.subject))
+      .first();
+    if (!existing) throw new Error("User not found");
+
+    await ctx.db.patch(existing._id, { colorTheme });
+  },
+});
